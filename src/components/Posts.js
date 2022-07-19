@@ -14,6 +14,7 @@ export default function Posts () {
                     return !doc.metadata.hasPendingWrites ? updatedPosts.push(doc.data()) : null;
                 });
                 console.log(updatedPosts);
+                updatedPosts.sort(function (x, y) {return y.timestamp - x.timestamp})
                 setPosts(updatedPosts)
             });
 
