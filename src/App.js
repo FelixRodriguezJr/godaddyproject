@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import db from './firebase'
 import { doc, collection, setDoc, serverTimestamp } from 'firebase/firestore'
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Typography, Grid, Box } from '@mui/material';
+import Posts from './components/Posts'
 
 function App() {
   const [value, setValue] = useState('')
@@ -21,26 +22,26 @@ function App() {
   }
   
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button variant="contained" onClick={createPost}>Create Post</Button>
+    <Box style={{margin: 20}}>
+      <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <Typography variant="h3">GoDaddy Answers</Typography>
+      </Grid>
+      <Grid item xs={6}>
+          <Button variant="contained" onClick={createPost}>Create Post</Button>
+          <TextField style={{color: "white"}} value={value} onChange={handleChange} variant="outlined" />
+        </Grid>
+        <Grid item xs={6}>
+          <Posts></Posts>
+        </Grid>
+        
+        
+        
     
-        <TextField style={{color: "white"}} value={value} onChange={handleChange} variant="outlined" />
-      </header>
-    </div>
-
+        
+        
+      </Grid>
+    </Box>
   );
 }
 
