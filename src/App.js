@@ -7,16 +7,22 @@ import { Button, TextField, Typography, Grid, Box } from '@mui/material';
 import Posts from './components/Posts'
 
 function App() {
-  const [value, setValue] = useState('')
+  const [content, setContent] = useState('')
+  const [title, setTitle] = useState('')
   
-  const handleChange = event => {
-    setValue(event.target.value)
+  
+  const handleChangeContent = (event) => {
+    setContent(event.target.value)
+  }
+  const handleChangeTitle = (event) => {
+    setTitle(event.target.value)
   }
   const createPost = async () => {
     console.log('Creating POst')
     const newPostRef = doc(collection(db, "posts"));
     await setDoc(newPostRef, {
-        content: value,
+        title: title,
+        content: content,
         timestamp: serverTimestamp()
     });
   }
@@ -27,19 +33,14 @@ function App() {
       <Grid item xs={12}>
         <Typography variant="h3">GoDaddy Answers</Typography>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12}>
           <Button variant="contained" onClick={createPost}>Create Post</Button>
-          <TextField style={{color: "white"}} value={value} onChange={handleChange} variant="outlined" />
+          <TextField value={title} onChange={handleChangeTitle} variant="outlined" />
+          <TextField value={content} onChange={handleChangeContent} variant="outlined" />
         </Grid>
         <Grid item xs={6}>
           <Posts></Posts>
         </Grid>
-        
-        
-        
-    
-        
-        
       </Grid>
     </Box>
   );

@@ -1,8 +1,8 @@
-import { Card, CardContent, Typography } from '@mui/material'
+import { AlertTitle, Card, CardContent, Typography } from '@mui/material'
 import moment from 'moment'
  
 
-export default function Post({ post: { content, timestamp } }) {
+export default function Post({ post: { content, timestamp, title } }) {
     
     const styles = {
         cardContainer: {
@@ -13,6 +13,7 @@ export default function Post({ post: { content, timestamp } }) {
     return (
         <Card elevation={10} style={styles.cardContainer}>
             <CardContent>
+                <Typography variant="h5">{title}</Typography>
                 <Typography>{content}</Typography>
                 <span>{moment.unix(timestamp.seconds).startOf('second').fromNow()}</span>
             </CardContent>
