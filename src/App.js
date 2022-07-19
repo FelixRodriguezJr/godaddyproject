@@ -29,16 +29,28 @@ function App() {
   
   return (
     <Box style={{margin: 20}}>
-      <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Typography variant="h3">GoDaddy Answers</Typography>
-      </Grid>
-      <Grid item xs={12}>
-          <Button variant="contained" onClick={createPost}>Create Post</Button>
-          <TextField value={title} onChange={handleChangeTitle} variant="outlined" />
-          <TextField value={content} onChange={handleChangeContent} variant="outlined" />
+      <Grid container spacing={2} alignItems="center" justifyContent="center">
+        <Grid item xs={12}>
+          <Typography style={{textAlign: "center"}} variant="h3">GoDaddy Answers</Typography>
         </Grid>
-        <Grid item xs={6}>
+
+        <Grid item xs={4} style={{textAlign: "left"}} >
+            <TextField fullWidth label="Question" value={title} onChange={handleChangeTitle} variant="outlined" />
+        </Grid>
+
+        <Grid item xs={0} style={{textAlign: "left"}} >
+          <Button size="large" variant="contained" onClick={createPost}>Create Post</Button>
+        </Grid>
+
+        <Grid item xs={8} style={{textAlign: "center"}} >
+          <TextField fullWidth multiline maxRows={4} label="Details" value={content} onChange={handleChangeContent} variant="outlined" />
+        </Grid>
+
+        <Grid item xs={12} style={{textAlign: "center"}} >
+          <Button variant="contained" onClick={createPost}>Create Post</Button>
+        </Grid>
+
+        <Grid item xs={8} justifyContent="center">
           <Posts></Posts>
         </Grid>
       </Grid>
