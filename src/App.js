@@ -33,19 +33,21 @@ function App() {
     <Box style={{ margin: 20 }}>
       <Grid container spacing={2} alignItems="center" justifyContent="center">
         <Grid item xs={12}>
-          <Typography style={{ textAlign: "center" }} variant="h3">GoDaddy Answers</Typography>
+          <Typography style={{ textAlign: "center" }} variant="h3">GoDaddy Companion</Typography>
         </Grid>
 
-        <Grid item xs={4} style={{ textAlign: "left" }} >
+        <Grid item xs={8} style={{ textAlign: "left" }} >
           <TextField required fullWidth label="Question" value={title} onChange={handleChangeTitle} variant="outlined" />
         </Grid>
 
-        <Grid item xs={0} style={{ textAlign: "left" }} >
-          <Button size="large" variant="contained" onClick={createPost}>Create Post</Button>
+        
+        <Grid xs={8} item >
+            <TextField required fullWidth multiline maxRows={4} label="Details" value={content} onChange={handleChangeContent} variant="outlined" />
         </Grid>
+        
 
-        <Grid item xs={8} style={{ textAlign: "center" }} >
-          <TextField required fullWidth multiline maxRows={4} label="Details" value={content} onChange={handleChangeContent} variant="outlined" />
+        <Grid item xs={5} style={{ textAlign: "center" }} >
+          <Button fullWidth size="large" variant="contained" onClick={createPost}>Create Post</Button>
         </Grid>
 
         {/*

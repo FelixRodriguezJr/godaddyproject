@@ -1,5 +1,7 @@
-import { AlertTitle, Card, CardContent, Typography } from '@mui/material'
+import { AlertTitle, Card, CardContent, Typography, Button} from '@mui/material'
 import moment from 'moment'
+import SendIcon from '@mui/icons-material/Send';
+
  
 
 export default function Post({ post: { content, timestamp, title } }) {
@@ -15,7 +17,9 @@ export default function Post({ post: { content, timestamp, title } }) {
             <CardContent>
                 <Typography variant="h5">{title}</Typography>
                 <Typography>{content}</Typography>
-                <span>{moment.unix(timestamp.seconds).startOf('second').fromNow()}</span>
+                <div>{moment.unix(timestamp.seconds).startOf('second').fromNow()}</div>
+                <Button style={{ marginTop: 10}} color="secondary" variant="outlined" endIcon={<SendIcon />}>Reply</Button>
+               
             </CardContent>
             
         </Card>
