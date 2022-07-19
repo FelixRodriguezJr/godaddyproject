@@ -1,7 +1,19 @@
+import { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import db from './firebase'
+import { doc, collection, setDoc, serverTimestamp} from 'firebase/firestore'
 
 function App() {
+  const createPost = async () => {
+    console.log('Creating POst')
+    const newPostRef = doc(collection(db, "posts"));
+        await setDoc(newPostRef, {
+            content: 'This is a test post from react',
+            timestamp: serverTimestamp()
+        });
+  }
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +29,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={createPost}>Create Post</button>
       </header>
     </div>
   );
