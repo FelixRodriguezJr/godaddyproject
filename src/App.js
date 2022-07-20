@@ -5,6 +5,7 @@ import db from './firebase'
 import { doc, collection, setDoc, serverTimestamp } from 'firebase/firestore'
 import { Button, TextField, Typography, Grid, Box } from '@mui/material';
 import Posts from './components/Posts'
+import SearchBar from './components/SearchBar'
 
 function App() {
   const [content, setContent] = useState('')
@@ -37,6 +38,10 @@ function App() {
             <Typography style={{ textAlign: "center" }} variant="h1" fontStyle='italic' fontWeight="500">GoDaddy Companion</Typography>
           </Grid>
 
+          <Grid item xs={12} >
+            <SearchBar></SearchBar>
+          </Grid>
+          
           <Grid item xs={8} style={{ textAlign: "left" }}>
             <TextField required fullWidth label="Question" value={title} onChange={handleChangeTitle} variant="outlined" />
           </Grid>
