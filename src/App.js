@@ -7,6 +7,22 @@ import { Button, TextField, Typography, Grid, Box } from '@mui/material';
 import Posts from './components/Posts'
 import SearchBar from './components/SearchBar'
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  status: {
+    danger: '#e53e3e',
+  },
+  palette: {
+    neutral: {
+      main: '#00d6d5',
+      contrastText: '#fff',
+    },
+  },
+});
+
+
+
 function App() {
   const [content, setContent] = useState('')
   const [title, setTitle] = useState('')
@@ -32,15 +48,16 @@ function App() {
 
   return (
     <><Box />
-      <Box style={{ margin: 20 }}>
+      <Box style={{  }}>
         <Grid container spacing={2} alignItems="center" justifyContent="center">
-          <Grid item xs={12}>
-            <Typography style={{ textAlign: "center" }} variant="h1" fontStyle='italic' fontWeight="500">GoDaddy Companion</Typography>
-          </Grid>
-
-          <Grid item xs={12} >
+        <Grid item xs={12} >
             <SearchBar></SearchBar>
           </Grid>
+          <Grid item xs={12}>
+            <Typography style={{ textAlign: "center" }} variant="h1"  fontWeight="500">GoDaddy Companion</Typography>
+          </Grid>
+
+         
           
           <Grid item xs={8} style={{ textAlign: "left" }}>
             <TextField required fullWidth label="Question" value={title} onChange={handleChangeTitle} variant="outlined" />
@@ -53,7 +70,10 @@ function App() {
           </Grid>
 
           <Grid item xs={5} style={{ textAlign: "center" }}>
-            <Button fullWidth size="large" variant="contained" onClick={createPost}>Publish</Button>
+            <ThemeProvider theme={theme}>
+              <Button fullWidth color="neutral" size="large" variant="contained" onClick={createPost}>Publish</Button>
+            </ThemeProvider>
+            
           </Grid>
 
           <Grid item xs={8} justifyContent="center">

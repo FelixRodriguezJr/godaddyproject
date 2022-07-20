@@ -92,6 +92,7 @@ export default function SearchBar() {
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      onClick={handleProfileMenuOpen}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
@@ -120,7 +121,7 @@ export default function SearchBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{background: '#00d6d5'}}>
         <Toolbar>
           <IconButton
             size="large"

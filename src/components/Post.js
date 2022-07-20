@@ -12,6 +12,7 @@ import {
 import { useState } from 'react';
 import moment from 'moment';
 import SendIcon from '@mui/icons-material/Send';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const style = {
   position: 'absolute',
@@ -24,6 +25,18 @@ const style = {
   boxShadow: 24,
   p: 7,
 };
+
+const theme = createTheme({
+    status: {
+      danger: '#e53e3e',
+    },
+    palette: {
+      neutral: {
+        main: '#00d6d5',
+        contrastText: '#fff',
+      },
+    },
+  });
 
 export default function Post({ post: { content, timestamp, title } }) {
   const styles = {
@@ -44,16 +57,18 @@ export default function Post({ post: { content, timestamp, title } }) {
         <div>{moment.unix(timestamp.seconds).startOf('second').fromNow()}</div>
         <Grid container>
           <Grid item xs={8}>
-            <Button
-              style={{ marginTop: 20, marginLeft: 5}}
-              
-              color='secondary'
-              variant='outlined'
-              endIcon={<SendIcon />}
-              onClick={handleOpen}
-            >
-              Reply
-            </Button>
+            <ThemeProvider theme={theme}>
+                <Button
+                style={{ marginTop: 20, marginLeft: 5}}
+                
+                color='neutral'
+                variant='outlined'
+                endIcon={<SendIcon />}
+                onClick={handleOpen}
+                >
+                Reply
+                </Button>
+            </ThemeProvider>
           </Grid>
           <Grid item>
             <Typography style={{ marginTop: 27 }}>
@@ -78,9 +93,12 @@ export default function Post({ post: { content, timestamp, title } }) {
               multiline
               label='Enter Reply'
             ></TextField>
-            <Button onClick={handleClose} color='secondary'>
-              Submit Reply
-            </Button>
+            <ThemeProvider theme={theme}>
+                <Button onClick={handleClose} color='neutral'>
+                Submit Reply
+                </Button>
+            </ThemeProvider>
+            
           </Box>
         </Modal>
       </CardContent>
