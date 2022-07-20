@@ -20,9 +20,9 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 600,
   bgcolor: 'background.paper',
-  'border-radius': '10px',
+  'border-radius': '20px',
   boxShadow: 24,
-  p: 4,
+  p: 7,
 };
 
 export default function Post({ post: { content, timestamp, title } }) {
@@ -43,9 +43,9 @@ export default function Post({ post: { content, timestamp, title } }) {
         <Typography>{content}</Typography>
         <div>{moment.unix(timestamp.seconds).startOf('second').fromNow()}</div>
         <Grid container>
-          <Grid item xs={9}>
+          <Grid item xs={8}>
             <Button
-              style={{ marginTop: 20, }}
+              style={{ marginTop: 20, marginLeft: 5}}
               
               color='secondary'
               variant='outlined'
@@ -56,8 +56,8 @@ export default function Post({ post: { content, timestamp, title } }) {
             </Button>
           </Grid>
           <Grid item>
-            <Typography style={{ textAlign: 'right', marginTop: 30 }}>
-              Posted by user@godaddy.com
+            <Typography style={{ marginTop: 27 }}>
+              Published by user@godaddy.com
             </Typography>
           </Grid>
         </Grid>
@@ -76,7 +76,7 @@ export default function Post({ post: { content, timestamp, title } }) {
               style={{ marginTop: 10 }}
               fullWidth
               multiline
-              label='Enter Your Reply'
+              label='Enter Reply'
             ></TextField>
             <Button onClick={handleClose} color='secondary'>
               Submit Reply

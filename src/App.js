@@ -30,37 +30,33 @@ function App() {
   }
 
   return (
-    <Box style={{ margin: 20 }}>
-      <Grid container spacing={2} alignItems="center" justifyContent="center">
-        <Grid item xs={12}>
-          <Typography style={{ textAlign: "center" }} variant="h3">GoDaddy Companion</Typography>
-        </Grid>
+    <><Box />
+      <Box style={{ margin: 20 }}>
+        <Grid container spacing={2} alignItems="center" justifyContent="center">
+          <Grid item xs={12}>
+            <Typography style={{ textAlign: "center" }} variant="h1" fontStyle='italic' fontWeight="500">GoDaddy Companion</Typography>
+          </Grid>
 
-        <Grid item xs={8} style={{ textAlign: "left" }} >
-          <TextField required fullWidth label="Question" value={title} onChange={handleChangeTitle} variant="outlined" />
-        </Grid>
+          <Grid item xs={8} style={{ textAlign: "left" }}>
+            <TextField required fullWidth label="Question" value={title} onChange={handleChangeTitle} variant="outlined" />
+          </Grid>
 
-        
-        <Grid xs={8} item >
+          <Box></Box>
+
+          <Grid xs={8} item>
             <TextField required fullWidth multiline maxRows={4} label="Details" value={content} onChange={handleChangeContent} variant="outlined" />
-        </Grid>
-        
+          </Grid>
 
-        <Grid item xs={5} style={{ textAlign: "center" }} >
-          <Button fullWidth size="large" variant="contained" onClick={createPost}>Create Post</Button>
-        </Grid>
+          <Grid item xs={5} style={{ textAlign: "center" }}>
+            <Button fullWidth size="large" variant="contained" onClick={createPost}>Publish</Button>
+          </Grid>
 
-        {/*
-        <Grid item xs={12} style={{textAlign: "center"}} >
-          <Button variant="contained" onClick={createPost}>Create Post</Button>
+          <Grid item xs={8} justifyContent="center">
+            <Posts></Posts>
+          </Grid>
         </Grid>
-        */}
-
-        <Grid item xs={8} justifyContent="center">
-          <Posts></Posts>
-        </Grid>
-      </Grid>
-    </Box>
+      </Box></>
+      
   );
 }
 
